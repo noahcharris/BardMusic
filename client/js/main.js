@@ -1,4 +1,4 @@
-angular.module('BardApp', ['ngRoute'])
+angular.module('BardApp', ['ngRoute', 'leaflet-directive'])
 
 
 .controller('BlogController', ['$scope', function($scope) {
@@ -15,6 +15,13 @@ angular.module('BardApp', ['ngRoute'])
 }])
 .controller('MapController', ['$scope', function($scope) {
   $scope.name = 'mapsl';
+}])
+.controller("SimpleMapController", [ '$scope', function($scope) {
+    angular.extend($scope, {
+        defaults: {
+            scrollWheelZoom: false
+        }
+    });
 }])
 
 angular.module('BardApp')

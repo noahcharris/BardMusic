@@ -3,8 +3,12 @@
 <head>
   <title>Bard Music</title>
   <link rel="stylesheet" type="text/css" href="/styles.css"></link>
+  <!-- Leaflet styles -->
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css">
 </head>
 <body>
+
+  
   <br/>
   <br/>
   <br/>
@@ -20,12 +24,21 @@
 
 
 
+
   <div ng-view>
   </div>
 
-
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+        <!-- Leaflet, maybe put this on the view at some point? -->
+  <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
+  <script src="/js/angular-leaflet-directive.min.js"></script>
+  
   <script src="/js/angular-route.min.js"></script>
   <script src="/js/main.js"></script>
+
+  <leaflet width="640px" height="480px"></leaflet>
+
+
+
 </body>
 </html>

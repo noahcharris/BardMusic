@@ -4,6 +4,7 @@ getRoutes = {
   '/': serveIndex,
   '/js/main.js': serveApp,
   '/js/angular-route.min.js': serveRoutes,
+  '/js/angular-leaflet-directive.min.js': serveLeafletDirective,
   '/favicon.ico': serveIcon,
   '/styles.css': serveStyles,
   '/views/blog.html': serveView,            //need to abstract these views out somehow, also: band pages
@@ -70,6 +71,10 @@ function serveApp(request, response) {
 
 function serveRoutes(request, response) {
   serveStaticAssets(response, 'js', 'angular-route.min.js', 'text/javascript');
+}
+
+function serveLeafletDirective(request, response) {
+  serveStaticAssets(response, 'js', 'angular-leaflet-directive.min.js', 'text/javascript');
 }
 
 function serveStyles(request, response) {
