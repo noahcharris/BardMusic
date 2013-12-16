@@ -7,9 +7,12 @@ angular.module('BardApp', ['ngRoute'])
 //   })
 //   .otherwise({redirectTo: '/'});
 // }])
-.controller('BlogController',['$scope', function($scope) {
+.controller('BlogController', ['$scope', function($scope) {
   $scope.name = 'Teh blogz';
-}]);
+}])
+.controller('CalendarController', ['$scope', function($scope) {
+  $scope.name = 'WHOHWOH';
+}])
 
 angular.module('BardApp')
 
