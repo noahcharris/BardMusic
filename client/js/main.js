@@ -1,17 +1,20 @@
 angular.module('BardApp', ['ngRoute'])
-// .config(['$routeProvider', function($routeProvider) {
-//   $routeProvider.when('/', {
-//     console.log('home');
-//     controller: 'HomeController',
-//     template: '<div>HI!!</div>'          //use templateUrl when providing a path
-//   })
-//   .otherwise({redirectTo: '/'});
-// }])
+
+
 .controller('BlogController', ['$scope', function($scope) {
   $scope.name = 'Teh blogz';
 }])
 .controller('CalendarController', ['$scope', function($scope) {
   $scope.name = 'WHOHWOH';
+}])
+.controller('BandsController', ['$scope', function($scope) {
+  $scope.name = 'Namdsns';
+}])
+.controller('PhotoController', ['$scope', function($scope) {
+  $scope.name = 'ohoph';
+}])
+.controller('MapController', ['$scope', function($scope) {
+  $scope.name = 'mapsl';
 }])
 
 angular.module('BardApp')

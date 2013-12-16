@@ -6,11 +6,11 @@ getRoutes = {
   '/js/angular-route.min.js': serveRoutes,
   '/favicon.ico': serveIcon,
   '/styles.css': serveStyles,
-  '/views/blog.html': serveBlogView,            //need to abstract these views out somehow, also: band pages
-  '/views/calendar.html': serveCalendarView, //need a serveView function or something like that
-  // '/views/bands.html': serveBandsView,       //I'll use two for now to enable switching for client testing
-  // '/views/photo.html': servePhotoView,
-  // '/views/map.html': serveMapView
+  '/views/blog.html': serveView,            //need to abstract these views out somehow, also: band pages
+  '/views/calendar.html': serveView, //need a serveView function or something like that
+  '/views/bands.html': serveView,       //I'll use two for now to enable switching for client testing
+  '/views/photo.html': serveView,
+  '/views/map.html': serveView
 };
 
 postRoutes = {
@@ -54,6 +54,11 @@ function serveStaticAssets(res, folder, asset, type) {    //set up to use client
   });
 };
 
+function serveView(request, response) {
+  serveStaticAssets(response, 'views', request.url.split('/')[2], 'text/html');
+}
+
+
 
 function serveIndex(request, response) {
   serveStaticAssets(response, '.', 'index.html', 'text/html');
@@ -69,14 +74,6 @@ function serveRoutes(request, response) {
 
 function serveStyles(request, response) {
   serveStaticAssets(response, '.', 'styles.css', 'text/css');
-}
-
-function serveBlogView(request, response) {    //Maybe refactor this to serve up any of the views???
-  serveStaticAssets(response, 'views', 'blog.html', 'text/html');
-}
-
-function serveCalendarView(request, response) {
-  serveStaticAssets(response, 'views', 'calendar.html', 'text/html');
 }
 
 function serveIcon(request, response) {
