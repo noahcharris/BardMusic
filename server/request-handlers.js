@@ -13,8 +13,9 @@ getRoutes = {
   '/views/bands.html': serveView,
   '/views/photo.html': serveView,
   '/views/map.html': serveView,
-  //serving up all the band pages
-  
+  //serving up all the band pages         //gotta use ng-repeats and a 'getBands' service or something like that
+  //serving up images                     // same as ^
+
 };
 
 postRoutes = {
