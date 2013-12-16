@@ -13,10 +13,7 @@ angular.module('BardApp', ['ngRoute', 'leaflet-directive'])
 .controller('PhotoController', ['$scope', function($scope) {
   $scope.name = 'ohoph';
 }])
-.controller('MapController', ['$scope', function($scope) {
-  $scope.name = 'maps';
-}])
-.controller("SimpleMapController", [ '$scope', function($scope) {
+.controller("MapController", [ '$scope', function($scope) {
     angular.extend($scope, {
         center: {
             lat: 42.0211,
@@ -31,6 +28,8 @@ angular.module('BardApp', ['ngRoute', 'leaflet-directive'])
 
 angular.module('BardApp')
 
+
+//ROUTING
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {
     controller: 'BlogController',
@@ -52,9 +51,14 @@ angular.module('BardApp')
     controller: 'MapController',
     templateUrl: '/views/map.html'
   })
+  .when('/this-that-and-the-otter', {    //sample for the band stuff, probably need a better system than this
+    controller: 'BandPageController',
+    templateUrl: '/views/bandPage.html'     //how do I pass information through to these?
+  })
   .otherwise({redirectTo: '/'});
 }]);
 
 
 
 console.log('Loaded BardApp');
+

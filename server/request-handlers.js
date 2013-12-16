@@ -7,11 +7,14 @@ getRoutes = {
   '/js/angular-leaflet-directive.min.js': serveLeafletDirective,
   '/favicon.ico': serveIcon,
   '/styles.css': serveStyles,
+  //serving up all the partials
   '/views/blog.html': serveView,            //need to abstract these views out somehow, also: band pages
-  '/views/calendar.html': serveView, //need a serveView function or something like that
-  '/views/bands.html': serveView,       //I'll use two for now to enable switching for client testing
+  '/views/calendar.html': serveView,
+  '/views/bands.html': serveView,
   '/views/photo.html': serveView,
-  '/views/map.html': serveView
+  '/views/map.html': serveView,
+  //serving up all the band pages
+  
 };
 
 postRoutes = {
