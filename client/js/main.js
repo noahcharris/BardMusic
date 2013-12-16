@@ -14,10 +14,15 @@ angular.module('BardApp', ['ngRoute', 'leaflet-directive'])
   $scope.name = 'ohoph';
 }])
 .controller('MapController', ['$scope', function($scope) {
-  $scope.name = 'mapsl';
+  $scope.name = 'maps';
 }])
 .controller("SimpleMapController", [ '$scope', function($scope) {
     angular.extend($scope, {
+        center: {
+            lat: 42.0211,
+            lng: -73.9076,
+            zoom: 15
+        },
         defaults: {
             scrollWheelZoom: false
         }
