@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="BardApp">
 <head>
   <title>Bard Music</title>
   <link rel="stylesheet" type="text/css" href="/styles.css"></link>
@@ -7,8 +7,16 @@
 <body>
   <input type="text" ng-model="name"></input>
   {{ name }}
+  <hr/>
+
+
+
+  <div ng-view>
+  </div>
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+  <script src="/js/angular-route.min.js"></script>
   <script src="/js/main.js"></script>
 </body>
 </html>
