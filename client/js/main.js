@@ -18,6 +18,22 @@ angular.module('BardApp')
     controller: 'BlogController',
     templateUrl: '/views/blog.html'
   })
+  .when('/calendar', {
+    controller: 'CalendarController',
+    templateUrl: '/views/calendar.html'
+  })
+  .when('/bands', {
+    controller: 'BandsController',
+    templateUrl: '/views/bands.html'
+  })
+  .when('/photo', {
+    controller: 'PhotoController',
+    templateUrl: '/views/photo.html'
+  })
+  .when('/map', {
+    controller: 'MapController',
+    templateUrl: '/views/map.html'
+  })
   .otherwise({redirectTo: '/'});
 }]);
 

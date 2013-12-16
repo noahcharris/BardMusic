@@ -6,11 +6,23 @@ getRoutes = {
   '/js/angular-route.min.js': serveRoutes,
   '/favicon.ico': serveIcon,
   '/styles.css': serveStyles,
-  '/views/blog.html': serveBlogView       //need to abstract these views out somehow, also: band pages
+  '/views/blog.html': serveBlogView,       //need to abstract these views out somehow, also: band pages
+  // '/views/calendar.html': serveCalendarView,
+  // '/views/bands.html': serveBandsView,
+  // '/views/photo.html': servePhotoView,
+  // '/views/map.html': serveMapView
 };
 
 postRoutes = {
 
+};
+
+headers = headers = {
+  "access-control-allow-origin": "*",
+  "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
+  "access-control-allow-headers": "content-type, accept",
+  "access-control-max-age": 10, // Seconds.
+  'Content-Type': "text/html"
 };
 
 exports.mainHandler = function(request, response) {
@@ -29,46 +41,38 @@ exports.mainHandler = function(request, response) {
   }
 };
 
-
-function serveIndex(request, response) {
-  fs.readFile(__dirname + '/../client/index.html', function(err, data) {
-    if (err) throw err;
-    response.writeHead(200, {'Content-type':'text/html'});
-    response.end(data);
+function serveStaticAssets(res, folder, asset, type) {    //set up to use client file, so folder means 'within client'
+  fs.readFile(__dirname + '/../client/' + folder + "/" + asset, function(err, data) {
+    var status = 200;
+    if (err) {
+      status = 404;
+      console.log("Could not load asset.");
+    }
+    headers['Content-Type'] = type;
+    res.writeHead(200, headers);
+    res.end(data);
   });
 };
 
+
+function serveIndex(request, response) {
+  serveStaticAssets(response, '.', 'index.html', 'text/html');
+};
+
 function serveApp(request, response) {
-  fs.readFile(__dirname + '/../client/js/main.js', function(err, data) {
-    if (err) throw err;
-    response.writeHead(200, {'Content-type':'text/javascript'});
-    response.end(data);
-  });
+  serveStaticAssets(response, 'js', 'main.js', 'text/javascript');
 }
 
 function serveRoutes(request, response) {
-  fs.readFile(__dirname + '/../client/js/angular-route.min.js', function(err, data) {
-    console.log('hi');
-    if (err) throw err;
-    response.writeHead(200, {'Content-type':'text/javascript'});
-    response.end(data);
-  });
+  serveStaticAssets(response, 'js', 'angular-route.min.js', 'text/javascript');
 }
 
 function serveStyles(request, response) {
-  fs.readFile(__dirname + '/../client/styles.css', function(err, data) {
-    if (err) throw err;
-    response.writeHead(200, {'Content-type':'text/css'});
-    response.end(data);
-  });
+  serveStaticAssets(response, '.', 'styles.css', 'text/css');
 }
 
 function serveBlogView(request, response) {
-  fs.readFile(__dirname + '/../client/views/blog.html', function(err, data) {
-    if (err) throw err;
-    response.writeHead(200, {'Content-type':'text/html'});
-    response.end(data);
-  });
+  serveStaticAssets(response, 'views', 'blog.html', 'text/html');
 }
 
 function serveIcon(request, response) {
