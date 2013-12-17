@@ -15,6 +15,7 @@ getRoutes = {
   '/favicon.ico': serveIcon,
   //serving styles
   '/styles.css': serveStyles,
+  '/fullcalendar.css': servefc,
   //serving up all the partials
   '/views/blog.html': serveView,            //need to abstract these views out somehow, also: band pages
   '/views/calendar.html': serveView,
@@ -22,7 +23,7 @@ getRoutes = {
   '/views/photo.html': serveView,
   '/views/map.html': serveView,
   //serving up all the band pages         //gotta use ng-repeats and a 'getBands' service or something like that
-  //serving up images                     // same as ^
+  //serving up images                     // same as ^ (getImages in a service or factory or something)
 
 };
 
@@ -78,10 +79,14 @@ function serveJS(request, response) {
 
 function serveIndex(request, response) {
   serveStaticAssets(response, '.', 'index.html', 'text/html');
-};
+}
 
 function serveStyles(request, response) {
   serveStaticAssets(response, '.', 'styles.css', 'text/css');
+}
+
+function servefc(request, response) {
+  serveStaticAssets(response, '.', 'fullcalendar.css', 'text/css');
 }
 
 function serveIcon(request, response) {
