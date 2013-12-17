@@ -24,6 +24,7 @@ getRoutes = {
   '/views/map.html': serveView,
   //serving up all the band pages         //gotta use ng-repeats and a 'getBands' service or something like that
   //serving up images                     // same as ^ (getImages in a service or factory or something)
+  '/images': serveImages
 
 };
 
@@ -92,6 +93,24 @@ function servefc(request, response) {
 function serveIcon(request, response) {
   //serve icon
 }
+
+function serveImages(request, response) {       //wtf am I doing....
+  fs.readdir(__dirname + '/../client/media', function(err, files) {
+    response.writeHead(200, {'Content-type':'text/javascript'});
+    response.write('[');
+    for (var i=0;i<files.length;i++) {
+      response.write(fs.readFileSync(__dirname + '/../client/media/' + files[i]) + ',');
+    }
+    console.log(response.body);
+    response.end(']');
+  });
+
+}
+
+
+
+
+
 
 
 

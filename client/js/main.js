@@ -4,9 +4,13 @@ angular.module('BardApp', ['ngRoute', 'leaflet-directive', 'ui.calendar'])
 .controller('BlogController', ['$scope', function($scope) {
   $scope.name = 'Teh blogz';
 }])
-.controller('CalendarController', ['$scope', function($scope) {
+.controller('CalendarController', ['$scope', function($scope, $timeout) {
 
-  $scope.eventSources = 
+  console.log($scope.eventSources);
+
+  $scope.eventSources = [];
+
+    $scope.eventSources =
     [
         {
             title: 'Event1',
@@ -32,16 +36,20 @@ angular.module('BardApp', ['ngRoute', 'leaflet-directive', 'ui.calendar'])
     };
 
     $scope.thing = function() {
-      console.log($scope.myCalendar);
+      $scope.myCalendar.fullCalendar('addEventSource', 'https://www.google.com/calendar/feeds/is1pi2pqvskt3f8rtj9rij9i0c%40group.calendar.google.com/public/basic');
     };
 
 
 }])
-.controller('BandsController', ['$scope', function($scope) {
+.controller('BandsController', ['$scope', '$http', function($scope, $http) {
   $scope.name = 'Namdsns';
 }])
-.controller('PhotoController', ['$scope', function($scope) {
+.controller('PhotoController', ['$scope', '$http', function($scope, $http) {
   $scope.name = 'ohoph';
+  $http({
+    method: 'GET',
+    url: '/images'
+  }).then(function(data) {console.log(data.data);});
 }])
 .controller("MapController", [ '$scope', function($scope) {
     angular.extend($scope, {
