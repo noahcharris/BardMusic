@@ -1,0 +1,20 @@
+{
+  "name": "BardMusic",
+  "version": "0.0.0",
+  "homepage": "https://github.com/noahcharris/BardMusic",
+  "authors": [
+    "Noah Harris <noah.christopher.harris@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-calendar": "latest"
+}
+}

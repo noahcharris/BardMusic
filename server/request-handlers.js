@@ -2,10 +2,20 @@ var fs = require('fs');
 
 getRoutes = {
   '/': serveIndex,
-  '/js/main.js': serveApp,
-  '/js/angular-route.min.js': serveRoutes,
-  '/js/angular-leaflet-directive.min.js': serveLeafletDirective,
+  //serving up all the javascript
+  '/js/main.js': serveJS,
+  '/js/angular.min.js': serveJS,  //take this out if it doesn't work
+  '/js/angular-route.min.js': serveJS,
+  '/js/angular-leaflet-directive.min.js': serveJS,
+  '/js/jquery.min.js':serveJS,
+  '/js/jquery-ui.min.js':serveJS,
+  '/js/calendar.js':serveJS,
+  '/js/fullcalendar.min.js':serveJS,    //temporary
+  '/js/gcal.js':serveJS,
+  //serving up favicon
   '/favicon.ico': serveIcon,
+  //serving styles
+  '/fullcalendar.css' : serveFC,
   '/styles.css': serveStyles,
   //serving up all the partials
   '/views/blog.html': serveView,            //need to abstract these views out somehow, also: band pages
@@ -63,23 +73,18 @@ function serveView(request, response) {
   serveStaticAssets(response, 'views', request.url.split('/')[2], 'text/html');
 }
 
+function serveJS(request, response) {
+  serveStaticAssets(response, 'js', request.url.split('/')[2], 'text/javascript');
+}
+
+function serveFC(request, response) {
+  serveStaticAssets(response, '.', 'fullcalendar.css', 'text/css');     //temporary
+}
 
 
 function serveIndex(request, response) {
   serveStaticAssets(response, '.', 'index.html', 'text/html');
 };
-
-function serveApp(request, response) {
-  serveStaticAssets(response, 'js', 'main.js', 'text/javascript');
-}
-
-function serveRoutes(request, response) {
-  serveStaticAssets(response, 'js', 'angular-route.min.js', 'text/javascript');
-}
-
-function serveLeafletDirective(request, response) {
-  serveStaticAssets(response, 'js', 'angular-leaflet-directive.min.js', 'text/javascript');
-}
 
 function serveStyles(request, response) {
   serveStaticAssets(response, '.', 'styles.css', 'text/css');

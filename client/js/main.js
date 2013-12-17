@@ -1,11 +1,24 @@
-angular.module('BardApp', ['ngRoute', 'leaflet-directive'])
+angular.module('BardApp', ['ngRoute', 'leaflet-directive', 'ui.calendar'])
 
 
 .controller('BlogController', ['$scope', function($scope) {
   $scope.name = 'Teh blogz';
 }])
 .controller('CalendarController', ['$scope', function($scope) {
-  $scope.name = 'WHOHWOH';
+
+  $scope.eventSources = 
+    [
+        {
+            title: 'Event1',
+            start: '2011-04-04'
+        },
+        {
+            title: 'Event2',
+            start: '2011-05-05'
+        }
+        // etc...
+    ]
+
 }])
 .controller('BandsController', ['$scope', function($scope) {
   $scope.name = 'Namdsns';
