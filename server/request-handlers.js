@@ -24,7 +24,8 @@ getRoutes = {
   '/views/map.html': serveView,
   //serving up all the band pages         //gotta use ng-repeats and a 'getBands' service or something like that
   //serving up images                     // same as ^ (getImages in a service or factory or something)
-  '/images': serveImages
+  '/mm.jpg': serveImages, //MAYBE JUST SERVE THE LINKS and then the site can come back for the files???
+  '/part.jpg': serveImages //need to learn how to use splats- like, any url with /images prepended activates serveImages
 
 };
 
@@ -94,17 +95,8 @@ function serveIcon(request, response) {
   //serve icon
 }
 
-function serveImages(request, response) {       //wtf am I doing....
-  fs.readdir(__dirname + '/../client/media', function(err, files) {
-    response.writeHead(200, {'Content-type':'text/javascript'});
-    response.write('[');
-    for (var i=0;i<files.length;i++) {
-      response.write(fs.readFileSync(__dirname + '/../client/media/' + files[i]) + ',');
-    }
-    console.log(response.body);
-    response.end(']');
-  });
-
+function serveImages(request, response) {       //wtf am I doing.... just serve up mm first I guess
+  serveStaticAssets(response, 'media', request.url.split('/')[1], 'image/jpg');
 }
 
 

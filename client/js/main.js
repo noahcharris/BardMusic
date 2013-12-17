@@ -49,7 +49,7 @@ angular.module('BardApp', ['ngRoute', 'leaflet-directive', 'ui.calendar'])
   $http({
     method: 'GET',
     url: '/images'
-  }).then(function(data) {console.log(data.data);});
+  }).then(function(data) {console.log("Retrieved the image data");});
 }])
 .controller("MapController", [ '$scope', function($scope) {
     angular.extend($scope, {
