@@ -10,14 +10,27 @@ angular.module('BardApp', ['ngRoute', 'leaflet-directive', 'ui.calendar'])
     [
         {
             title: 'Event1',
-            start: '2011-04-04'
+            start: '2013-12-12T13:15:30Z'
         },
         {
             title: 'Event2',
-            start: '2011-05-05'
+            start: '2013-12-12'
         }
         // etc...
-    ]
+    ];
+
+    $scope.uiConfig = {
+      calendar:{
+        height: 450,
+        editable: true,
+        header:{
+          left: 'month basicWeek basicDay agendaWeek agendaDay',
+          center: 'title',
+          right: 'today prev,next'
+        }
+      }
+    }
+
 
 }])
 .controller('BandsController', ['$scope', function($scope) {
