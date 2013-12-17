@@ -4,18 +4,16 @@ getRoutes = {
   '/': serveIndex,
   //serving up all the javascript
   '/js/main.js': serveJS,
-  '/js/angular.min.js': serveJS,  //take this out if it doesn't work
   '/js/angular-route.min.js': serveJS,
   '/js/angular-leaflet-directive.min.js': serveJS,
   '/js/jquery.min.js':serveJS,
   '/js/jquery-ui.min.js':serveJS,
   '/js/calendar.js':serveJS,
-  '/js/fullcalendar.min.js':serveJS,    //temporary
+  '/js/fullcalendar.min.js':serveJS,
   '/js/gcal.js':serveJS,
   //serving up favicon
   '/favicon.ico': serveIcon,
   //serving styles
-  '/fullcalendar.css' : serveFC,
   '/styles.css': serveStyles,
   //serving up all the partials
   '/views/blog.html': serveView,            //need to abstract these views out somehow, also: band pages
@@ -75,10 +73,6 @@ function serveView(request, response) {
 
 function serveJS(request, response) {
   serveStaticAssets(response, 'js', request.url.split('/')[2], 'text/javascript');
-}
-
-function serveFC(request, response) {
-  serveStaticAssets(response, '.', 'fullcalendar.css', 'text/css');     //temporary
 }
 
 

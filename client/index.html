@@ -21,33 +21,24 @@
   </div>
   <hr/>
 
-
-
-
   <div ng-view>
   </div>
 
-
-
+  <!--apparently debugging would be easier if I was using minified libraries here-->
   <script type="text/javascript" src="/js/jquery.min.js"></script>
   <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.js"></script>
-  <!--<script src="/js/angular.min.js"></script>-->
+
   <script src="/js/angular-leaflet-directive.min.js"></script>
   <script src="/js/angular-route.min.js"></script>
   <script src="/js/main.js"></script>
   <!-- for some reason I can't put this in the map template, it has to go here..-->
   <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
 
-  <!--All the shit I need for the calendar.-->
   <script type="text/javascript" src="/js/calendar.js"></script>
   <script type="text/javascript" src="/js/fullcalendar.min.js"></script>
   <script type="text/javascript" src="/js/gcal.js"></script>
-
-<div ng-controller="CalendarController">
-  <div ui-calendar ng-model="eventSources"></div>
-</div>
 
 
 </body>
