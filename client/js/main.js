@@ -6,8 +6,6 @@ angular.module('BardApp', ['ngRoute', 'leaflet-directive', 'ui.calendar'])
 }])
 .controller('CalendarController', ['$scope', function($scope, $timeout) {
 
-  console.log($scope.eventSources);
-
   $scope.eventSources = [];
 
     $scope.eventSources =
@@ -48,8 +46,8 @@ angular.module('BardApp', ['ngRoute', 'leaflet-directive', 'ui.calendar'])
   $scope.name = 'ohoph';
   $http({
     method: 'GET',
-    url: '/images'
-  }).then(function(data) {console.log("Retrieved the image data");});
+    url: '/imagelinks'
+  }).then(function(data) { console.log(data.data); $scope.links = data.data });
 }])
 .controller("MapController", [ '$scope', function($scope) {
     angular.extend($scope, {
