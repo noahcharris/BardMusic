@@ -58,6 +58,22 @@ angular.module('BardApp', ['ngRoute', 'leaflet-directive', 'ui.calendar'])
         },
         defaults: {
             scrollWheelZoom: false
+        },
+        markers: {
+            venue1Marker: {
+                lat: 42.0211,
+                lng: -73.9150,
+                message: "Venue1",
+                focus: true,
+                draggable: false
+            },
+            venue2Marker: {
+                lat: 42.0240,
+                lng: -73.9100,
+                message: "Venue2",
+                focus: false,
+                draggable: false
+            }
         }
     });
 }])
