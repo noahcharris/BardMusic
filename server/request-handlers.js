@@ -1,33 +1,21 @@
 var fs = require('fs');
 
 getRoutes = {
-  '/': serveIndex,
+  //index
+  '': serveIndex,
   //serving up all the javascript
-  '/js/main.js': serveJS,
-  '/js/angular-route.min.js': serveJS,
-  '/js/angular-leaflet-directive.min.js': serveJS,
-  '/js/jquery.min.js':serveJS,
-  '/js/jquery-ui.min.js':serveJS,
-  '/js/calendar.js':serveJS,
-  '/js/fullcalendar.min.js':serveJS,
-  '/js/gcal.js':serveJS,
-  //serving up favicon
-  '/favicon.ico': serveIcon,
-  //serving styles
-  '/styles.css': serveStyles,
-  '/fullcalendar.css': servefc,
-  //serving up all the partials
-  '/views/blog.html': serveView,            //need to abstract these views out somehow, also: band pages
-  '/views/calendar.html': serveView,
-  '/views/bands.html': serveView,
-  '/views/photo.html': serveView,
-  '/views/map.html': serveView,
+  'js': serveJS,
+  //favicon
+  'favicon.ico': serveIcon,
+  //styles
+  'styles.css': serveStyles,
+  'fullcalendar.css': servefc,
+  //partials
+  'views': serveView,            //need to abstract these views out somehow, also: band pages
   //serving up all the band pages         //gotta use ng-repeats and a 'getBands' service or something like that
   //images
-  '/imagelinks': serveImageLinks,
-  '/mm.jpg': serveImages, //MAYBE JUST SERVE THE LINKS and then the site can come back for the files???
-  '/part.jpg': serveImages //need to learn how to use splats- like, any url with /images prepended activates serveImages
-
+  'imagelinks': serveImageLinks,
+  'image': serveImages
 };
 
 postRoutes = {
@@ -46,8 +34,8 @@ exports.mainHandler = function(request, response) {
   console.log('Serving ' + request.method + ' at ' + request.url);
 
   if (request.method === 'GET') {
-    if (getRoutes[request.url])
-      getRoutes[request.url](request, response);
+    if (getRoutes[request.url.split('/')[1]])     //WOOOO new routing system
+      getRoutes[request.url.split('/')[1]](request, response);
   } else if (request.method === 'POST') {
     if (postRoutes[request.url])
       postRoutes[request.url](request, response);
@@ -107,7 +95,7 @@ function serveImageLinks(request, response) {
 }
 
 function serveImages(request, response) {       //wtf am I doing.... just serve up mm first I guess
-  serveStaticAssets(response, 'media', request.url.split('/')[1], 'image/jpg');
+  serveStaticAssets(response, 'media', request.url.split('/')[2], 'image/jpg');
 }
 
 
