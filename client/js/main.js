@@ -19,23 +19,6 @@ angular.module('BardApp', ['ngRoute', 'leaflet-directive', 'ui.calendar'])
         // etc...
     ];
 
-    $scope.events = [
-        {
-            title  : 'event1',
-            start  : '2013-12-12'
-        },
-        {
-            title  : 'event2',
-            start  : '2013-12-12',
-            end    : '2013-12-13'
-        },
-        {
-            title  : 'event3',
-            start  : '2010-01-09 12:30:00',
-            allDay : false // will make the time show
-        }
-    ];
-
     $scope.uiConfig = {
       calendar:{
         height: 450,
