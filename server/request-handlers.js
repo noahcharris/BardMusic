@@ -10,6 +10,7 @@ getRoutes = {
   //styles
   'styles.css': serveStyles,
   'fullcalendar.css': servefc,
+  'subtlefeathers.png': serveFeathers,
   //partials
   'views': serveView,
   //serving up all the band pages         //gotta use ng-repeats and a 'getBands' service or something like that
@@ -79,6 +80,11 @@ function serveStyles(request, response) {
 function servefc(request, response) {
   serveStaticAssets(response, '.', 'fullcalendar.css', 'text/css');
 }
+
+function serveFeathers(request, response) {
+  serveStaticAssets(response, '.', 'subtlefeathers.png', 'image/png');
+}
+
 
 function serveIcon(request, response) {
   //serve icon
