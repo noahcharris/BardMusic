@@ -37,18 +37,17 @@ angular.module('BardApp', ['ngRoute', 'leaflet-directive', 'ui.calendar'])
       {title: 'Birthday Party',start: new Date(y, m, d + 1, 19, 0),end: new Date(y, m, d + 1, 22, 30),allDay: false}
     ];
 
-  $scope.thing = function() {
-    $scope.myCalendar.fullCalendar('addEventSource', 'https://www.google.com/calendar/feeds/is1pi2pqvskt3f8rtj9rij9i0c%40group.calendar.google.com/public/basic');
-    $scope.myCalendar.fullCalendar('addEventSource', $scope.events);
-  }
-
-  $scope.eventSources = [$scope.events, $scope.eventSource]; //// OMOMOMOGMGMGMGMGGGM SOOO MUCH HARDSHOP
+    //// OMOMOMOGMGMGMGMGGGM SOOO MUCH HARDSHOP
+  $scope.eventSources = [$scope.events, $scope.eventSource];
 
 
 
 }])
 .controller('BandsController', ['$scope', '$http', function($scope, $http) {
   $scope.name = 'Namdsns';
+}])
+.controller('BandPageController', ['$scope', function($scope) {
+  $scope.name = 'whachuknowaboutit';
 }])
 .controller('PhotoController', ['$scope', '$http', function($scope, $http) {
   $scope.name = 'ohoph';
