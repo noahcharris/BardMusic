@@ -1,0 +1,19 @@
+{
+  "name": "BardMusic",
+  "version": "0.0.0",
+  "description": "BardMusic =========",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/noahcharris/BardMusic.git"
+  },
+  "author": "Noah Harris",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/noahcharris/BardMusic/issues"
+  },
+  "homepage": "https://github.com/noahcharris/BardMusic"
+}
