@@ -103,10 +103,20 @@ angular.module('BardApp')
     controller: 'MapController',
     templateUrl: '/views/map.html'
   })
+  //TEMPORARY
   .when('/this-that-and-the-otter', {    //sample for the band stuff, probably need a better system than this
     controller: 'BandPageController',
-    templateUrl: '/views/bandPage.html'     //how do I pass information through to these?
+    templateUrl: '/views/bandpage.html'     //how do I pass information through to these dynamically? via the route url?
   })
+  .when('/Okdokey', {
+    controller: 'BandPageController',
+    templateUrl: '/views/bandpage.html'
+  })
+  .when('/smoggyMongo', {
+    controller: 'BandPageController',
+    templateUrl: '/views/bandpage.html'
+  })
+
   .otherwise({redirectTo: '/'});
 }]);
 
