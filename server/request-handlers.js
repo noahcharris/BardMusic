@@ -25,9 +25,8 @@ postRoutes = {
 headers = headers = {
   "access-control-allow-origin": "*",
   "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
-  "access-control-allow-headers": "content-type, accept",
-  "access-control-max-age": 100, // Seconds.
   'Cache-control': 'public',
+  'max-age': 31536000,
   'Content-Type': "text/html"
 };
 
