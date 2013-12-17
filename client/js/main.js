@@ -4,38 +4,46 @@ angular.module('BardApp', ['ngRoute', 'leaflet-directive', 'ui.calendar'])
 .controller('BlogController', ['$scope', function($scope) {
   $scope.name = 'Teh blogz';
 }])
-.controller('CalendarController', ['$scope', function($scope, $timeout) {
+.controller('CalendarController', ['$scope', '$timeout', function($scope, $timeout) {
 
-  $scope.eventSources = [];
+  $scope.eventSource = {
+    url: 'https://www.google.com/calendar/feeds/is1pi2pqvskt3f8rtj9rij9i0c%40group.calendar.google.com/public/basic'
+    //className: 'gcal-event',           // an option!
+    //currentTimezone: 'America/Chicago' // an option!
+  };
 
-    $scope.eventSources =
-    [
-        {
-            title: 'Event1',
-            start: '2013-12-12T13:15:30Z'
-        },
-        {
-            title: 'Event2',
-            start: '2013-12-12'
-        }
-        // etc...
+  $scope.uiConfig = {
+    calendar:{
+      height: 450,
+      editable: true,
+      header:{
+        //left: 'month basicWeek basicDay agendaWeek agendaDay',
+        //center: 'title',
+        right: 'today prev,next'
+      }
+    }
+  };
+
+  var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+
+  $scope.events = [
+      {title: 'All Day Event',start: new Date(y, m, 1)},
+      {title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
+      {id: 999,title: 'Repeating Event',start: new Date(y, m, d - 3, 16, 0),allDay: false,color:'#C0C0C0'},
+      {id: 999,title: 'Repeating Event',start: new Date(y, m, d + 4, 16, 0),allDay: false},
+      {title: 'Birthday Party',start: new Date(y, m, d + 1, 19, 0),end: new Date(y, m, d + 1, 22, 30),allDay: false}
     ];
 
-    $scope.uiConfig = {
-      calendar:{
-        height: 450,
-        editable: true,
-        header:{
-          left: 'month basicWeek basicDay agendaWeek agendaDay',
-          center: 'title',
-          right: 'today prev,next'
-        }
-      }
-    };
+  $scope.thing = function() {
+    $scope.myCalendar.fullCalendar('addEventSource', 'https://www.google.com/calendar/feeds/is1pi2pqvskt3f8rtj9rij9i0c%40group.calendar.google.com/public/basic');
+    $scope.myCalendar.fullCalendar('addEventSource', $scope.events);
+  }
 
-    $scope.thing = function() {
-      $scope.myCalendar.fullCalendar('addEventSource', 'https://www.google.com/calendar/feeds/is1pi2pqvskt3f8rtj9rij9i0c%40group.calendar.google.com/public/basic');
-    };
+  $scope.eventSources = [$scope.events, $scope.eventSource]; //// OMOMOMOGMGMGMGMGGGM SOOO MUCH HARDSHOP
+
 
 
 }])
@@ -77,6 +85,7 @@ angular.module('BardApp', ['ngRoute', 'leaflet-directive', 'ui.calendar'])
         }
     });
 }])
+//.controller("Ban")
 
 angular.module('BardApp')
 

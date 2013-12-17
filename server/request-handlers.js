@@ -11,7 +11,7 @@ getRoutes = {
   'styles.css': serveStyles,
   'fullcalendar.css': servefc,
   //partials
-  'views': serveView,            //need to abstract these views out somehow, also: band pages
+  'views': serveView,
   //serving up all the band pages         //gotta use ng-repeats and a 'getBands' service or something like that
   //images
   'imagelinks': serveImageLinks,
@@ -94,7 +94,7 @@ function serveImageLinks(request, response) {
   });
 }
 
-function serveImages(request, response) {       //wtf am I doing.... just serve up mm first I guess
+function serveImages(request, response) {
   serveStaticAssets(response, 'media', request.url.split('/')[2], 'image/jpg');
 }
 
