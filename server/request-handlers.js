@@ -28,7 +28,6 @@ headers = headers = {
   "access-control-allow-headers": "content-type, accept",
   "access-control-max-age": 10, // Seconds.
   'Cache-control': 'public',
-  'max-age', 100,
   'Content-Type': "text/html"
 };
 
